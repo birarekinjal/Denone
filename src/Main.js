@@ -33,6 +33,12 @@ import { connect } from "react-redux";
 const Home = loadable(() => import("./container/Home.js"), {
   fallback: <Loader />,
 });
+const Login = loadable(() => import("./container/auth/login.js"), {
+  fallback: <Loader />,
+});
+const Register = loadable(() => import("./container/auth/register.js"), {
+  fallback: <Loader />,
+});
 
 class Main extends Component {
   constructor(props) {
@@ -47,6 +53,8 @@ class Main extends Component {
     const route = (
       <Switch>
         <PublicRoute restricted component={Home} path="/home" exact />
+        <PublicRoute restricted component={Login} path="/login" exact />
+        <PublicRoute restricted component={Register} path="/register" exact />
         <Redirect to="/" />
       </Switch>
     );
